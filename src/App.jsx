@@ -14,6 +14,7 @@ import PostList from "./pages/PostList"
 
 import * as userService from './services/userService'
 import * as challangeService from './services/challanges'
+import * as postService from './services/posts'
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
@@ -25,7 +26,7 @@ const getUserFromToken = () => {
 const App = () => {
   
   const [user, setUser] = useState(getUserFromToken())
-  // const [allUsers,setAllUsers]=useState([])
+
 
 
   return (
@@ -33,12 +34,24 @@ const App = () => {
       <Nav user={user} setUser={setUser} />
       <main className="app-main">
       <Routes>
-        <Route path='/' element={user ? <Dashboard/> : <Landing />} />
-        <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
-        <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
+        <Route path='/' element={user ? <Dashboard user={user} /> : <Landing />} />
+        {user ? (
+          <>
+            <Route path='/challanges' element={<ChallangeList/>} />
+            <Route path='/challanges/:challangeId' element={<ChallangeDetails user={user} />} />
+            <Route path='/challanges/new' element={<ChallangeForm/>} />
+            <Route path='/challanges/:challangeId/edit' element={<ChallangeForm/>}/>
 
-        <Route path='/challanges' element={<ChallangeList/>}/>
-        <Route path = 'challanges/:challangeId' element={<ChallangeDetails/>}/>
+
+            <Route path='/challanges/:challangeId/posts' element={<PostList/>}/>
+            <Route path='/challanges/:challangeId/posts/:postId/edit' element={<PostForm/>}/>
+          </>
+        ) : (
+          <>
+            <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
+            <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
+          </>
+        )}
       </Routes>
       </main>
     </div>
