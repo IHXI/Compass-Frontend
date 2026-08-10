@@ -7,6 +7,7 @@ import SignInForm from "./pages/SignInForm"
 import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
 import ChallangeList from "./pages/ChallangeList"
+import ChallangeDetails from "./pages/ChallangeDetails"
 import * as userService from './services/userService'
 
 const getUserFromToken = () => {
@@ -32,6 +33,7 @@ const App = () => {
         <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
 
         <Route path='/challanges' element={<ChallangeList/>}/>
+        <Route path = 'challanges/:challangeId' element={<ChallangeDetails/>}/>
       </Routes>
       </main>
     </div>
