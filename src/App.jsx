@@ -1,19 +1,20 @@
 import Nav from "./components/Nav"
 import SignUpForm from "./pages/SignUpForm"
 import './App.css'
-import { Routes, Route } from "react-router"
+import { Routes, Route, useNavigate } from "react-router"
 import { useEffect, useState } from "react"
+
 import SignInForm from "./pages/SignInForm"
 import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
-import ChallangeList from "./pages/ChallangeList"
-import ChallangeDetails from "./pages/ChallangeDetails"
-import ChallangeForm from "./pages/ChallangeForm"
+import ChallengeList from "./pages/ChallengeList"
+import ChallengeDetails from "./pages/ChallengeDetails"
+import ChallengeForm from "./pages/ChallengeForm"
 import PostForm from "./pages/PostForm"
 import PostList from "./pages/PostList"
 
 import * as userService from './services/userService'
-import * as challangeService from './services/challanges'
+import * as challengeService from './services/challenges'
 import * as postService from './services/posts'
 
 const getUserFromToken = () => {
@@ -24,8 +25,18 @@ const getUserFromToken = () => {
 }
 
 const App = () => {
+  const navigate =useNavigate()
   
   const [user, setUser] = useState(getUserFromToken())
+  const [challenges, setChallenges] = useState([])
+
+  useEffect(()=>{
+    const fetchAllChallenges = async () => {
+      const challengesData = await challengeService.index()
+      setChallenges(challengesData)
+    }
+    if (user) fetchAllChallenges()
+  }, [user])
 
 
 
@@ -37,19 +48,19 @@ const App = () => {
         <Route path='/' element={user ? <Dashboard user={user} /> : <Landing />} />
         {user ? (
           <>
-            <Route path='/challanges' element={<ChallangeList/>} />
-            <Route path='/challanges/:challangeId' element={<ChallangeDetails user={user} />} />
-            <Route path='/challanges/new' element={<ChallangeForm/>} />
-            <Route path='/challanges/:challangeId/edit' element={<ChallangeForm/>}/>
+            <Route path='/challenges' element={<ChallengeList challenges={challenges}/>} />
+            <Route path='/challenges/:challengeId' element={<ChallengeDetails user={user} />} />
+            <Route path='/challenges/new' element={<ChallengeForm/>} />
+            <Route path='/challenges/:challengeId/edit' element={<ChallengeForm/>}/>
 
 
-            <Route path='/challanges/:challangeId/posts' element={<PostList/>}/>
-            <Route path='/challanges/:challangeId/posts/:postId/edit' element={<PostForm/>}/>
+            <Route path='/challenges/:challengeId/posts' element={<PostList/>}/>
+            <Route path='/challenges/:challengeId/posts/:postId/edit' element={<PostForm/>}/>
           </>
         ) : (
           <>
-            <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
-            <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
+            <Route path='/auth/sign-up' element={<SignUpForm setUser={setUser} />} />
+            <Route path='/auth/sign-in' element={<SignInForm setUser={setUser} />} />
           </>
         )}
       </Routes>

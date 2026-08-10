@@ -1,4 +1,4 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/challanges`
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/challenges`
 
 const index = async()=>{
     try{
@@ -11,9 +11,9 @@ const index = async()=>{
     }
 }
 
-const show = async(challangeId) =>{
+const show = async(challengeId) =>{
     try {
-        const res = await fetch(`${BASE_URL}/${challangeId}`,{
+        const res = await fetch(`${BASE_URL}/${challengeId}`,{
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}`},
         })
             return res.json()
@@ -22,7 +22,7 @@ const show = async(challangeId) =>{
         }
     }
 
-const create = async (ChallangeFormData) => {
+const create = async (ChallengeFormData) => {
     try{
         const res = await fetch(BASE_URL, {
             method: 'POST',
@@ -30,7 +30,7 @@ const create = async (ChallangeFormData) => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(ChallangeFormData)
+            body: JSON.stringify(ChallengeFormData)
         })
         return res.json()
     }catch(error){
