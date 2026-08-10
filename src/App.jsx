@@ -8,7 +8,12 @@ import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
 import ChallangeList from "./pages/ChallangeList"
 import ChallangeDetails from "./pages/ChallangeDetails"
+import ChallangeForm from "./pages/ChallangeForm"
+import PostForm from "./pages/PostForm"
+import PostList from "./pages/PostList"
+
 import * as userService from './services/userService'
+import * as challangeService from './services/challanges'
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
