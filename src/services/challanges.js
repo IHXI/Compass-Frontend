@@ -11,9 +11,9 @@ const index = async()=>{
     }
 }
 
-const show = async(challangId) =>{
+const show = async(challangeId) =>{
     try {
-        const res = await fetch(`${BASE_URL}/${challangId}`,{
+        const res = await fetch(`${BASE_URL}/${challangeId}`,{
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}`},
         })
             return res.json()
@@ -22,8 +22,25 @@ const show = async(challangId) =>{
         }
     }
 
+const create = async (ChallangeFormData) => {
+    try{
+        const res = await fetch(BASE_URL, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(ChallangeFormData)
+        })
+        return res.json()
+    }catch(error){
+        console.log(error)
+    }
+}
+
 
 export {
     index,
-    show
+    show,
+    create
 }
