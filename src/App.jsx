@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import SignInForm from "./pages/SignInForm"
 import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
+import ChallangeList from "./pages/ChallangeList"
 import * as userService from './services/userService'
 
 const getUserFromToken = () => {
@@ -29,6 +30,8 @@ const App = () => {
         <Route path='/' element={user ? <Dashboard/> : <Landing />} />
         <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
         <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
+
+        <Route path='/challanges' element={<ChallangeList/>}/>
       </Routes>
       </main>
     </div>
