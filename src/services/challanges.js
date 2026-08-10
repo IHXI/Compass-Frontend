@@ -11,7 +11,19 @@ const index = async()=>{
     }
 }
 
+const show = async(challangId) =>{
+    try {
+        const res = await fetch(`${BASE_URL}/${challangId}`,{
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}`},
+        })
+            return res.json()
+        }catch(error){
+            console.log(error)
+        }
+    }
+
 
 export {
-    index
+    index,
+    show
 }
