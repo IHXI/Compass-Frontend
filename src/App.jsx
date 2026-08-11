@@ -29,6 +29,7 @@ const App = () => {
   
   const [user, setUser] = useState(getUserFromToken())
   const [challenges, setChallenges] = useState([])
+  const [posts, setPosts] = useState([])
 
   useEffect(()=>{
     const fetchAllChallenges = async () => {
@@ -38,7 +39,13 @@ const App = () => {
     if (user) fetchAllChallenges()
   }, [user])
 
-
+useEffect(()=>{
+  const fetchAllPosts = async()=>{
+    const postsData = await postService.index()
+    setPosts(postsData)
+  }
+  if (user) fetchAllPosts()
+}, [user])
 
   return (
     <div>
@@ -49,7 +56,7 @@ const App = () => {
         {user ? (
           <>
             <Route path='/challenges' element={<ChallengeList challenges={challenges}/>} />
-            <Route path='/challenges/:challengeId' element={<ChallengeDetails user={user} />} />
+            <Route path='/challenges/:challengeId' element={<ChallengeDetails user={user} challenges={challenges} posts ={posts}/>} />
             <Route path='/challenges/new' element={<ChallengeForm/>} />
             <Route path='/challenges/:challengeId/edit' element={<ChallengeForm/>}/>
 

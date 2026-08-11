@@ -1,10 +1,16 @@
 import { useState } from "react"
 
 const ChallengeForm =(props)=>{
+    const initialState ={
+        
+    }
     return(
-        <div>
-            <h1>challenge form</h1>
-        </div>
+        <form>
+            title: "",
+            text:"",
+            category:"",
+            country:"",
+        </form>
     )
 }
 

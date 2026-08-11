@@ -1,10 +1,36 @@
-import { useParams } from "react-router"
+import { Link, useParams } from "react-router"
 import * as challengeService from "../services/challenges"
-const ChallengeDetails =()=>{
+import { useEffect, useState } from "react"
+
+const ChallengeDetails =(props)=>{
+    const {challengeId} = useParams()
+    const [challenge, setChallenge] = useState(null)
+
+    useEffect(()=>{
+        const fetchChallenge = async()=>{
+            const challengeData = await challengeService.show(challengeId)
+            setChallenge(challengeData)
+        }
+        fetchChallenge()
+    }, [challengeId])
+
+    if (!challenge) {
+        return <p>Loading...</p>
+    }
     return(
-        <div>
-            <h1>challenge details</h1>
-        </div>
+        <article>
+            <header>
+                <h1>{challenge.title}</h1>
+
+
+            </header>
+            <span><h4>{challenge.text}</h4></span>
+            <footer>
+                <button>Participate</button>
+                <Link to={`/challenges/${challengeId}/posts`}>Participants Posts</Link>
+            </footer>
+        </article>
+        
     )
 }
 
