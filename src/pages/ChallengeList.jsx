@@ -7,8 +7,13 @@ const ChallengeList =(props)=>{
                     <article>
                         <header>
                             <h2>{challenge.title}</h2>
-                            <p>{challenge.text}</p>
+                            <p>{challenge.country}</p> 
                         </header>
+                        <p>{challenge.text}</p>
+                        <footer>
+                            {new Date(challenge.createdAt).toLocaleDateString()}
+                        </footer>
+                       
                     </article>
                 </Link>
             ))}

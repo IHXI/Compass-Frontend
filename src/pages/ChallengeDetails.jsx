@@ -1,3 +1,5 @@
+import { useParams } from "react-router"
+import * as challengeService from "../services/challenges"
 const ChallengeDetails =()=>{
     return(
         <div>

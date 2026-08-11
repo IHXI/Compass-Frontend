@@ -25,10 +25,10 @@ const Nav = (props) => {
                     <Link to='/'>Home</Link>  
                 </li>
                 <li>
-                    <Link to='/sign-up'>Sign Up</Link>
+                    <Link to='/auth/sign-up'>Sign Up</Link>
                 </li>
                 <li>
-                    <Link to='/sign-in'>Sign In</Link>
+                    <Link to='/auth/sign-in'>Sign In</Link>
                 </li>
             </ul>
             ) }
