@@ -13,7 +13,7 @@ const index = async()=>{
 
 const show = async(challengeId) =>{
     try {
-        const res = await fetch(`${BASE_URL}/${challengeId}`,{
+        const res = await fetch(`${BASE_URL}/${challengeId}/posts`,{
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}`},
         })
             return res.json()
@@ -32,10 +32,10 @@ const create = async (ChallengeFormData) => {
             },
             body: JSON.stringify(ChallengeFormData)
         })
-        return res.json()
-    }catch(error){
-        console.log(error)
-    }
+         return res.json()
+        }catch(error){
+            console.log(error)
+        }
 }
 
 

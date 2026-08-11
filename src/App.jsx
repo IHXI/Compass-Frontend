@@ -32,6 +32,7 @@ const App = () => {
   const [posts, setPosts] = useState([])
 
   useEffect(()=>{
+
     const fetchAllChallenges = async () => {
       const challengesData = await challengeService.index()
       setChallenges(challengesData)
@@ -47,6 +48,10 @@ useEffect(()=>{
   if (user) fetchAllPosts()
 }, [user])
 
+  const handleAddChallenge = async(formData) =>{
+    const newChallenge = await challengeService.create(formData)
+    setChallenges([...challenges, newChallenge])
+  }
   return (
     <div>
       <Nav user={user} setUser={setUser} />
@@ -57,9 +62,8 @@ useEffect(()=>{
           <>
             <Route path='/challenges' element={<ChallengeList challenges={challenges}/>} />
             <Route path='/challenges/:challengeId' element={<ChallengeDetails user={user} challenges={challenges} posts ={posts}/>} />
-            <Route path='/challenges/new' element={<ChallengeForm/>} />
+            <Route path='/challenges/new' element={<ChallengeForm handleAddChallenge={handleAddChallenge}/>} />
             <Route path='/challenges/:challengeId/edit' element={<ChallengeForm/>}/>
-
 
             <Route path='/challenges/:challengeId/posts' element={<PostList/>}/>
             <Route path='/challenges/:challengeId/posts/:postId/edit' element={<PostForm/>}/>

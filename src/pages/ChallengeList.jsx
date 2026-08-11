@@ -1,5 +1,7 @@
 import { Link } from "react-router"
+
 const ChallengeList =(props)=>{
+    
     return(
         <main>
             {props.challenges.map((challenge) => (
