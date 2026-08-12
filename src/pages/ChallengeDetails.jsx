@@ -27,7 +27,7 @@ const ChallengeDetails =(props)=>{
             <span><h4>{challenge.text}</h4></span>
             <footer>
                 <button>Participate</button>
-                <Link to={`/challenges`}>Participants Posts</Link>
+                <Link to={`/challenges/${challengeId}/posts`}>Participants Posts</Link>
             </footer>
         </article>
         
