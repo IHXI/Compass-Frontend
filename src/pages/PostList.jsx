@@ -24,7 +24,6 @@ useEffect(()=>{
     return(
         <div>
             <h1>Posts</h1>
-            <button>Add a post</button>
             <h2>{posts.map((post)=>(
                 <div className="postCard">
                 <p>{post.text}</p>

@@ -38,9 +38,26 @@ const create = async (ChallengeFormData) => {
         }
 }
 
+const addParticipant = async (challengeId) =>{
+    try{
+        const res=await fetch(`${BASE_URL}/${challengeId}/participate`,
+            {method: "POST",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            }
+        )
+        const data = await res.json()
+        return data
+    }catch(error){
+        console.log(error)
+    }
+}
+
 
 export {
     index,
     show,
-    create
+    create,
+    addParticipant
 }
