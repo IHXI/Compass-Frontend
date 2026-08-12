@@ -45,9 +45,22 @@ const update = async (challengeId, postId, postData) => {
     return data
 }
 
+const deletePost = async (challengeId, postId) =>{
+    const res = await fetch(`${BASE_URL}/${challengeId}/posts/${postId}`,{
+        method: "DELETE",
+        headers:{
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+    }
+)
+const data = await res.json()
+return data
+}
+
 
 export {
     index,
     create,
     update,
+    deletePost
 }
