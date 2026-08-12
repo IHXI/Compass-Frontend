@@ -32,9 +32,22 @@ const create = async (challengeId, formData) =>{
     }
 }
 
+const update = async (challengeId, postId, postData) => {
+    const res = await fetch(`${BASE_URL}/${challengeId}/posts/${postId}`, {
+        method: "PUT",
+        headers:{
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(postData)
+    })
+    const data = await res.json()
+    return data
+}
+
 
 export {
     index,
     create,
-    
+    update,
 }

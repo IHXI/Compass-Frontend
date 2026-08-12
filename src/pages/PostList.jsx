@@ -27,7 +27,7 @@ useEffect(()=>{
             <h2>{posts.map((post)=>(
                 <div className="postCard">
                 <p>{post.text}</p>
-                <p>{post.img}</p>
+                <img src={post.img}/>
                 </div> 
             ))}</h2>
         </div>
