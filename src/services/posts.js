@@ -14,7 +14,27 @@ const index = async (challengeId) => {
     } 
 }
 
+const create = async (challengeId, formData) =>{
+    try {
+        const res = await fetch(`${BASE_URL}/${challengeId}/posts`,{
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        const data = await res.json()
+        return data
+    } catch (error) {
+        console.log(error)
+        
+    }
+}
+
 
 export {
-    index
+    index,
+    create,
+    
 }
