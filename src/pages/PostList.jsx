@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useParams } from "react-router"
+import { useParams, Link} from "react-router"
 import { useState } from "react"
 import * as postService from '../services/posts'
 
@@ -16,21 +16,35 @@ useEffect(()=>{
     setPosts(postsData)
   }
   fetchAllPosts()
-//   if (user) fetchAllPosts()
 }, [])
 
+const handleDelete = async(postId) =>{
+    await postService.deletePost(challengeId, postId)
+    setPosts(posts.filter((post)=>(post._id !== postId)))
+}
 
 
     return(
-        <div>
-            <h1>Posts</h1>
-            <h2>{posts.map((post)=>(
-                <div className="postCard">
+            <main>
+                <h1>Posts</h1>
+                {posts.map((post)=>(
+                <div className="card">
                 <p>{post.text}</p>
                 <img src={post.img}/>
-                </div> 
-            ))}</h2>
-        </div>
+                
+            {post.author === props.user._id ? (
+                <div>
+                    <Link to={`/challenges/${challengeId}/posts/${post._id}/edit`}>Edit</Link>
+                    <button onClick={()=> handleDelete(post._id)}>Delete</button>
+
+                </div>
+            ):(
+                <></>
+            )}
+              </div>
+            ))}
+            </main>
+       
     )
     }
 

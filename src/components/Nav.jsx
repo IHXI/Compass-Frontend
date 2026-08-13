@@ -1,4 +1,5 @@
 import { Link } from "react-router"
+import compass from "../assets/compass.JPG"
 
 
 const Nav = (props) => {
@@ -10,13 +11,17 @@ const Nav = (props) => {
 
     return (
         <nav>
-            <Link className="nav-brand" to="/">App Name</Link>
+           
+            <Link className="nav-brand" to="/"> <img src={compass} width= "80px"/> Compass</Link>
             { props.user ? (
                 <ul>
                     <li>Welcome, {props.user.username}!</li>
                     <li><Link to='/'>Dashboard</Link></li>
                     <li>
                         <Link to="/" onClick={handleSignOut}>Sign Out</Link>
+                    </li>
+                    <li>
+                        <Link to="/challenges">Challenges</Link>
                     </li>
                 </ul>
             ) : (

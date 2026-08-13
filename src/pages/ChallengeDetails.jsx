@@ -6,7 +6,6 @@ import { useEffect, useState } from "react"
 const ChallengeDetails =(props)=>{
     const {challengeId} = useParams()
     const [challenge, setChallenge] = useState(null)
-    const [userParticipant, setUserParticipant] = useState(false)
     const [userPost, setUserPost] = useState(false)
 
     useEffect(()=>{
@@ -28,8 +27,6 @@ const ChallengeDetails =(props)=>{
     const handleParticipate = async() => {
         try{
             await challengeService.addParticipant(challengeId)
-            setUserParticipant(true)
-
         }catch(error){
             console.log(error)
         }
@@ -42,7 +39,7 @@ const ChallengeDetails =(props)=>{
             </header>
             <span><h4>{challenge.text}</h4></span>
             <footer>
-                {userParticipant || participantIds.includes(props.user._id) ? (
+                {participantIds.includes(props.user._id) ? (
                     <form action={`/challenges/${challengeId}/posts/new`}>
                         <button type="submit"> Add a post </button>
                     </form>

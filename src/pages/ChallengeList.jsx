@@ -6,7 +6,7 @@ const ChallengeList =(props)=>{
         <main>
             {props.challenges.map((challenge) => (
                 <Link key={challenge._id} to={`/challenges/${challenge._id}`}>
-                    <article>
+                    <article className="card">
                         <header>
                             <h2>{challenge.title}</h2>
                             <p>{challenge.country}</p> 

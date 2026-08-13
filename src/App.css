@@ -1,93 +1,258 @@
-#root {
-  min-height: 100vh;
+/* =========================
+   Travel Buddy - Global CSS
+   ========================= */
+
+:root {
+  --navy: #14213d;
+  --navy-light: #1f3359;
+  --blue-light: #e8f1ff;
+  --yellow: #f9c74f;
+  --coral: #f9844a;
+  --white: #ffffff;
+  --background: #f8fafc;
+  --text: #1f2937;
+  --muted: #64748b;
 }
 
-.app-main {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 48px 24px;
+* {
+  box-sizing: border-box;
 }
 
-@media (max-width: 600px) {
-  .app-main {
-    padding: 32px 16px;
-  }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: var(--text);
 }
+
+/* =========================
+   NAVBAR
+   ========================= */
 
 nav {
+  background: var(--navy);
+  padding: 18px 40px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
-  background-color: var( --color-surface);
+  justify-content: space-between;
+  box-shadow: 0 3px 12px rgba(20, 33, 61, 0.15);
 }
 
-nav ul {
-  display: flex;
-  gap: 16px;
-  list-style: none;
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 20px;
+  transition: 0.2s;
+   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 nav a:hover {
-  color: var(--color-primary);
+  color: var(--yellow);
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+/* =========================
+   PAGE CONTAINER
+   ========================= */
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* =========================
+   HEADINGS
+   ========================= */
+
+h1,
+h2,
+h3 {
+  color: var(--navy);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 11px 18px;
+  background: var(--navy);
+  color: white;
+  font-size: 15px;
   font-weight: 600;
-}
-
-form input {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid var(--color-primary);
-}
-
-form input:focus {
-  border-color: var(--color-primary);
-  outline: 2px solid var(--color-primary-soft);
-}
-
-.actions {
-  display: flex;
-  gap: 12px;
-}
-
-.actions button {
-  flex: 1;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 button:hover {
-  background-color: var(--color-primary-dark);
+  background: var(--navy-light);
+  transform: translateY(-1px);
 }
 
-button {
-  background-color: var(--color-primary);
-  color: white;
-  border-radius: 8px;
-  border: none;
-  padding: 12px 18px;
-  font-weight: bold;
+button:active {
+  transform: translateY(0);
 }
 
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+/* Yellow buttons */
+
+.btn-yellow {
+  background: var(--yellow);
+  color: var(--navy);
 }
 
-.card header {
-  margin-bottom: 24px;
-  text-align: center;
+.btn-yellow:hover {
+  background: #f5b82e;
 }
-  
+
+/* =========================
+   CARDS
+   ========================= */
+
 .card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(20, 33, 61, 0.08);
+  border: 1px solid #e5eaf1;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(20, 33, 61, 0.12);
+}
+
+/* =========================
+   FORMS
+   ========================= */
+
+form {
+  background: white;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(20, 33, 61, 0.08);
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+input,
+textarea,
+select {
   width: 100%;
-  max-width: 440px;
-  padding: 32px;
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  background: #fff;
+  transition: 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px var(--blue-light);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* =========================
+   LINKS
+   ========================= */
+
+a {
+  color: var(--navy);
+}
+
+a:hover {
+  color: var(--coral);
+}
+
+/* =========================
+   TRAVEL TAGS
+   ========================= */
+
+.tag {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 4px;
+  border-radius: 20px;
+  background: var(--blue-light);
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tag-yellow {
+  background: #fff3cd;
+}
+
+.tag-coral {
+  background: #ffe3d8;
+}
+
+/* =========================
+   IMAGES
+   ========================= */
+
+img {
+  max-width: 100%;
+  border-radius: 14px;
+}
+
+nav img {
+  border-radius: 60px;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 700px) {
+  nav {
+    padding: 15px 20px;
+  }
+
+  nav a {
+    margin-left: 10px;
+  }
+
+  main {
+    padding: 25px 16px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
 }

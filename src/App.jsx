@@ -59,7 +59,7 @@ const App = () => {
             <Route path='/challenges/new' element={<ChallengeForm handleAddChallenge={handleAddChallenge}/>} />
             <Route path='/challenges/:challengeId/edit' element={<ChallengeForm/>}/>
 
-            <Route path='/challenges/:challengeId/posts' element={<PostList/>}/>
+            <Route path='/challenges/:challengeId/posts' element={<PostList user={user}/>}/>
             <Route path='/challenges/:challengeId/posts/new' element={<PostForm user={user}/>}/>
             <Route path='/challenges/:challengeId/posts/:postId/edit' element={<PostForm/>}/>
           </>
