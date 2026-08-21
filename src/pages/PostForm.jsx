@@ -7,7 +7,7 @@ const PostForm =()=>{
     const navigate = useNavigate()
     const initialState = {
         text: "",
-        img: "",
+        img: "https://greggvanourek.com/wp-content/uploads/2022/04/Adventure-hiking-among-clouds.jpg"
     }
     const [formData, setFormData]= useState(initialState)
 
@@ -19,12 +19,9 @@ const PostForm =()=>{
                     post._id === postId
                 ))
                 setFormData(post)
-            }
-            if (postId){
-                fetchPost()
-            }
-            return () => setFormData(initialState)
-        }
+            }                
+        } 
+        fetchPost()
     },[postId])
 
     const handleChange = (event) =>{
@@ -33,7 +30,7 @@ const PostForm =()=>{
 
     const handleSubmit = async (event) =>{
         event.preventDefault()
-        await postService.create(challengeId, formData)
+        {postId ? (await postService.update(challengeId, postId, formData)) : (await postService.create(challengeId, formData))}     
         navigate(`/challenges/${challengeId}/posts`)
     }
 

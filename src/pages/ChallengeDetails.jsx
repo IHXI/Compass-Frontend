@@ -27,6 +27,7 @@ const ChallengeDetails =(props)=>{
     const handleParticipate = async() => {
         try{
             await challengeService.addParticipant(challengeId)
+            window.location.reload()
         }catch(error){
             console.log(error)
         }
