@@ -29,7 +29,7 @@ Compass is a challenges app designed to make exploring new places more interacti
  - Node.js
  - Express.js
 
-[Compass Backend Repository]()
+[Compass Backend Repository](https://github.com/IHXI/Compass-Backend)
 
 ## Databases
 
