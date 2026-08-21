@@ -5,7 +5,7 @@ Compass is a challenges app designed to make exploring new places more interacti
 
 ## Deployed App
 
-[Compass Live Website]()
+[Compass Live Website](https://compass-travel-app.netlify.app/)
 
 
 ## Features
