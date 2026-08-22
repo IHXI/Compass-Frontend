@@ -1,7 +1,9 @@
+
 # Compass
 
 Compass is a challenges app designed to make exploring new places more interactive, social, and fun. Users can discover challenges, participate in them, and share their progress through posts.
-<img src=""/>
+
+<img width="1897" height="864" alt="Screenshot 2026-08-21 142419" src="https://github.com/user-attachments/assets/1226ee79-03d1-40e9-a304-72f369d2ff7f" />
 
 ## Deployed App
 
@@ -70,3 +72,12 @@ VITE_BACK_END_SERVER_URL=http://localhost:3000
 ```bash
 npm run dev
 ```
+
+## Next Steps
+
+- Cloudinary image uploads
+- Likes on posts
+- Search and filtering for challenges
+- More location-based challenges
+- Badges, points, and a leaderboard
+- Interactive maps for challenge locations
